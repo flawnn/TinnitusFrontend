@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+    <title>TinnitusWeb</title>
+    <style>
+    .map {
+        height: 500px;
+        width: 80%;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    #placeholder{
+        height:50px
+    }
+     </style>
+  </head>
+  <body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue">
+            <a href="#" class="brand-logo center"> Tinnitus </a>
+            <ul id="nav" class="left">
+                    <li><a href="index.html">Map</a></li>
+            </ul>         
+            </div>
+        </nav>    
+    </div>
+    <div id="placeholder"></div>
+    <div id="mapcontainer" class="center-align valign-wrapper "><div id="map" class="map"></div></div>
+  </body>
+  <script src='../js/main.js' type="text/javascript"></script>
+</html>
