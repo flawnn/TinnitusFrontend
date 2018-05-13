@@ -1,8 +1,8 @@
 var heatmap;
 var heatmapData;
 
-var minZoom = 13;
-var maxZoom = 20;
+var minZoom = 14;
+var maxZoom = 15;
 
 var map;
 
@@ -19,22 +19,27 @@ function retrieveMapData(time) {
   var request = new XMLHttpRequest();
   request.open("GET", "http://10.23.40.77:8081/nw/geojson?stime=" + time, false);
   request.addEventListener('load', function(event) {
+    console.log(request.responseText);
     answer = request.responseText;
     if (request.status < 200 || request.status >= 300) {
       console.warn(request.statusText, request.responseText);
     }
 
+    console.log(answer);
+
     var sensors = JSON.parse(answer).points;
     for (var i = 0; i < sensors.length; i++) {
       var sensor = sensors[i];
-      heatmapData.push({location: new google.maps.LatLng(sensor.lat, sensor.lng), weight: sensor.vol});
+      vol = sensor.vol;
+      if (vol < 2) vol = 2;
+      heatmapData.push({location: new google.maps.LatLng(sensor.lat, sensor.lng), weight: vol});
     }
   });
   request.send();
 }
 
 function initMap() {
-  var koeln = new google.maps.LatLng(50.9468308,6.9531882);
+  var koeln = new google.maps.LatLng(50.9438308,6.9531882);
   map = new google.maps.Map(document.getElementById('map'), {
     center: koeln,
     zoom: minZoom,
@@ -44,6 +49,7 @@ function initMap() {
     data: heatmapData,
     dissipating: true,
     map:map,
+    maxIntensity:70,
     radius : calcRadius(minZoom)
   });
 
@@ -55,5 +61,5 @@ function initMap() {
 }
 
 function calcRadius(zoom) {
-  return (Math.pow(3, zoom) / 1500000);
+  return (Math.pow(3, zoom) / 500000);
 }

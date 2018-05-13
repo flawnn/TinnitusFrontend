@@ -2,15 +2,17 @@
 <html lang="de">
   <head>
     <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="../css/nouislider.css" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+    <script src="../js/nouislider.js" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOgoltQu5hxltxWfqNu_MmgHcujyKpZks&callback=loaded&libraries=visualization" async defer></script>
-    <title>TinnitusWeb</title>
+    <title>NoiseWatch</title>
     <style>
     .map {
-        height: 500px;
+        height: 400px;
         width: 80%;
         padding-left: 0;
         padding-right: 0;
@@ -21,21 +23,39 @@
     #placeholder{
         height:50px
     }
+    #range-field {
+        margin: auto;
+        width: 50%;
+        
+    }
+
+    .noUi-connect {
+    background: #2196f3; 
+    }
+    .noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
+        background: #2196f3;
+    }
+    .noUi-target.noUi-horizontal .noUi-tooltip {
+        background-color: #2196f3;
+    }
      </style>
   </head>
   <body>
         <div class="navbar-fixed">
             <nav>
                 <div class="nav-wrapper blue">
-                <a href="#" class="brand-logo center"><b>Tinnitus</b></a>
-                <ul id="nav" class="left">
-                        <li><a href="index.html">Map</a></li>
-                </ul>         
+                <a href="#" class="brand-logo center"><b>NoiseWatch</b></a>     
                 </div>
             </nav>    
         </div>
         <div id="placeholder"></div>
-        <div id="map" class="map"></div>
+        <div id="map" class="map"></div><br><br>
+      <!--  <form action="#">
+                <p class="range-field">
+                  <input type="range" id="test5" min="0" max="100" />
+                </p>
+         </form>     -->
+         <div id="range-field"></div>        
       </body>
       <script src="../js/gmapscript.js"></script>
       <script src='../js/main.js' type="text/javascript"></script>
